@@ -1,6 +1,5 @@
 package com.programming.techie;
 
-import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationRegistry;
 import io.micrometer.tracing.Tracer;
 import lombok.RequiredArgsConstructor;
@@ -12,13 +11,13 @@ import org.springframework.kafka.annotation.KafkaListener;
 @SpringBootApplication
 @Slf4j
 @RequiredArgsConstructor
-public class NotificationServiceApplication {
+public class NotificationServiceTestApplication {
 
     private final ObservationRegistry observationRegistry;
     private final Tracer tracer;
 
     public static void main(String[] args) {
-        SpringApplication.run(NotificationServiceApplication.class, args);
+        SpringApplication.run(NotificationServiceTestApplication.class, args);
     }
 
 //    @KafkaListener(topics = "notificationTopic")
@@ -31,7 +30,7 @@ public class NotificationServiceApplication {
 //        // send out an email notification
 //    }
 
-    @KafkaListener(topics = "notificationTopic")
+    @KafkaListener(topics = "test_topic",groupId = "group_id")
     public void handleNotification(OrderPlacedEvent orderPlacedEvent) {
             log.info("Received notification For Order - {}", orderPlacedEvent.getOrderNumber());
 

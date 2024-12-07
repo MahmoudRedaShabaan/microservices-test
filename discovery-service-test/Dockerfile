@@ -1,4 +1,5 @@
-FROM ubuntu:latest
-LABEL authors="Mahmoud.Redashabaan"
+FROM openjdk:17
 
-ENTRYPOINT ["top", "-b"]
+COPY target/*.jar app.jar
+
+ENTRYPOINT ["java","-jar","-Dspring.profiles.active=cloud","/app.jar"]
