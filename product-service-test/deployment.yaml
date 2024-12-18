@@ -13,6 +13,6 @@ spec:
         app: product-deployment
     spec:
       containers:
-        - name: product-service
-          image: reda1490/product-service
+        - name: productserviceimg
+          image: reda1490/productserviceimg
 
